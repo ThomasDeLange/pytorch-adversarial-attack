@@ -11,7 +11,7 @@ class FGSM(Attacker):
         """
         :param x: Inputs to perturb
         :param y: Ground-truth label
-        :param target : Target label 
+        :param target : Target label
         :return adversarial image
         """
         x_adv = x.detach().clone()
@@ -29,7 +29,7 @@ class FGSM(Attacker):
             cost = -F.cross_entropy(logit, y)
         else:
             cost = F.cross_entropy(logit, self.target)
-        
+
         if x_adv.grad is not None:
             x_adv.grad.data.fill_(0)
         cost.backward()

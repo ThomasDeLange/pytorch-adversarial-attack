@@ -12,7 +12,7 @@ class Attacker(ABC):
         """
         self.config = config
         self.model = model
-        self.clamp = (0,1)
+        self.clamp = (0, 1)
     
     def _random_init(self, x):
         x = x + (torch.rand(x.size(), dtype=x.dtype, device=x.device) - 0.5) * 2 * self.config['eps']
